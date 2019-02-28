@@ -26,6 +26,35 @@ li {
   list-style-type: none;
 }
 
+/*  Шрифт для формы  */
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: "symbols";
+    src: url("../fonts/symbols.woff") format("woff"), url("../fonts/symbols.woff2") format("woff2");
+}
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+    font-weight: normal;
+    line-height: 1em;
+    font-family: "symbols";
+    text-align: center;
+    text-transform: none;
+    text-decoration: inherit;
+    font-style: normal;
+    font-variant: normal;
+    speak: none;
+}
+
+.icon-plus::before { content: "\e801"; } /* "" */
+.icon-minus::before { content: "\e802"; } /* "" */
+
 /*  Шапка  */
 
 .cover {
@@ -85,6 +114,59 @@ li {
   height: 69px;
   top: 0;
 }
+
+.main-header-navigation-catalog {
+  display: block;
+  list-style: none;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.main-header-navigation-catalog div {
+  display: inline-block;
+  width: 240px;
+  padding: 14px 20px 16px;
+  line-height: 26px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.main-header-navigation-catalog .main-header-left {
+  padding-left: 72px;
+  text-align: left;
+}
+
+.main-header-navigation-catalog .main-header-right {
+  text-align: right;
+  padding-right: 72px;
+}
+
+.main-header-navigation-catalog a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.main-header-navigation-catalog a:hover {
+  color: #81b3d2;
+}
+
+.main-header-navigation-catalog a:active {
+  color: #c1c1c1;
+}
+
+.main-header-navigation-catalog .main-header-logo {
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  position: relative;
+  z-index: 10;
+  width: 138px;
+  height: 55px;
+  top: 0;
+}
+
 
 /*  index  */
 
@@ -245,42 +327,6 @@ li {
   width: 280px;
 }
 
-.container-find {
-  background: #ffffff;
-  height: 305px;
-  padding: 0 70px;
-}
-
-.container-find-go {
-  padding: 55px 50px 47px;
-}
-
-.container-find-go h2 {
-  line-height: 24px;
-  font-size: 30px;
-
-  margin-bottom: 30px;
-}
-
-.container-find-go p {
-  line-height: 24px;
-  margin-bottom: 50;
-}
-
-.container-find-button {
-  display: block;
-  width: 568px;
-  margin: 0 auto;
-  color: #ffffff;
-  padding: 30px 0 30px;
-  margin-top: 40px;
-  font-size: 21px;
-  line-height: 26px;
-  font-weight: bold;
-  text-decoration: none;
-  background: #766357;
-}
-
 .tag {
   width: 140px;
   padding: 28px 131px;
@@ -293,7 +339,7 @@ li {
 .footer-index {
   margin-top: -127px;
   background-color: #f9f9f9;
-  opacity: 0.5;
+  opacity: 0.9;
   vertical-align: middle;
 }
 
@@ -375,6 +421,291 @@ li {
   line-height: 65px;
 }
 
+/* Форма поиска на главной  */
+
+.container-find {
+    background: #ffffff;
+}
+
+.container-find-interested {
+    padding: 55px 50px 47px;
+}
+
+.container-find-interested h3 {
+    line-height: 24px;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.container-find-interested p {
+    line-height: 24px;
+    margin-bottom: 0;
+}
+
+.search-form-container {
+    position: relative;
+    width: 568px;
+    margin: 0 auto;
+}
+
+.search-button {
+    display: block;
+    width: 568px;
+    margin: 0 auto;
+    color: #ffffff;
+    padding: 30px 0 30px;
+    font-size: 21px;
+    line-height: 26px;
+    font-weight: bold;
+    text-decoration: none;
+    background: #766357;
+}
+
+.search-form {
+    display: none;
+    position: absolute;
+    top: 85px;
+    left: 0;
+    width: 568px;
+    padding: 57px 55px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    line-height: 26px;
+    text-align: left;
+    font-weight: bold;
+    background: #ffffff;
+    z-index: 1;
+}
+
+@-webkit-keyframes zoom-in {
+    from {
+        -webkit-transform: translate(10px, 100px) rotate(0) scale(0);
+        -ms-transform: translate(10px, 100px) rotate(0) scale(0);
+        transform: translate(10px, 100px) rotate(0) scale(0);
+    }
+    to {
+        -webkit-transform: translate(0, 0) rotate(360deg) scale(1);
+        -ms-transform: translate(0, 0) rotate(360deg) scale(1);
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        -webkit-transform: translate(10px, 100px) rotate(0) scale(0);
+        -ms-transform: translate(10px, 100px) rotate(0) scale(0);
+        transform: translate(10px, 100px) rotate(0) scale(0);
+    }
+    to {
+        -webkit-transform: translate(0, 0) rotate(360deg) scale(1);
+        -ms-transform: translate(0, 0) rotate(360deg) scale(1);
+        transform: translate(0, 0) rotate(360deg) scale(1);
+    }
+}
+
+@-webkit-keyframes zoom-out {
+    from {
+        -webkit-transform: translate(0, 0) scale(1) rotate(0);
+        -ms-transform: translate(0, 0) scale(1) rotate(0);
+        transform: translate(0, 0) scale(1) rotate(0);
+    }
+    to {
+        -webkit-transform: translate(10px, 100px) scale(0) rotate(-360deg);
+        -ms-transform: translate(10px, 100px) scale(0) rotate(-360deg);
+        transform: translate(10px, 100px) scale(0) rotate(-360deg);
+    }
+}
+
+@keyframes zoom-out {
+    from {
+        -webkit-transform: translate(0, 0) scale(1) rotate(0);
+        -ms-transform: translate(0, 0) scale(1) rotate(0);
+        transform: translate(0, 0) scale(1) rotate(0);
+    }
+    to {
+        -webkit-transform: translate(10px, 100px) scale(0) rotate(-360deg);
+        -ms-transform: translate(10px, 100px) scale(0) rotate(-360deg);
+        transform: translate(10px, 100px) scale(0) rotate(-360deg);
+    }
+}
+
+.search-form-visible {
+    display: block;
+    -webkit-animation: zoom-in 0.9s ease-in-out;
+    animation: zoom-in 0.9s ease-in-out;
+}
+
+.search-form-invisible {
+    display: block;
+    -webkit-animation: zoom-out 0.9s ease-in-out forwards;
+    animation: zoom-out 0.9s ease-in-out forwards;
+}
+
+.search-form .form-line {
+    position: relative;
+    width: 458px;
+    margin-bottom: 29px;
+}
+
+.sreach-form .form-line:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.search-form label {
+    float: left;
+    padding: 5px 0 7px;
+}
+
+.search-form .field {
+    float: right;
+    line-height: 26px;
+    padding: 4px 15px 8px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    background: #f2f2f2;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder {
+    color: #000000;
+}
+
+.search-form .field:hover {
+    background: #ebebeb;
+}
+
+.search-form .field:focus {
+    background: #ffffff;
+    outline: 2px solid #e5e5e5;
+}
+
+.search-form .date {
+    width: 346px;
+    padding-right: 37px;
+}
+
+.search-form .icon-calendar {
+    position: absolute;
+    right: 6px;
+    bottom: 0;
+    font-size: 21px;
+    font-weight: 200;
+    line-height: 38px;
+    color: #c2c2c2;
+    cursor: pointer;
+}
+
+.search-form .icon-calendar:hover {
+    color: #000000;
+}
+
+.search-form .icon-calendar:active {
+    color: #81b3d2;
+}
+
+.search-form .half-width {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.half-width .unit {
+    width: 114px;
+    padding-left: 55px;
+    padding-right: 50px;
+}
+
+.half-width:first-child .unit {
+    margin-right: 3px;
+}
+
+.half-width:last-child label {
+    margin-left: 50px;
+}
+
+.half-width .unit-container {
+    position: relative;
+}
+
+.unit-container .button {
+    position: absolute;
+    top: 0;
+    padding: 6px 9px;
+    line-height: 26px;
+    color: #a9a9a9;
+    background: #f2f2f2;
+    border: none;
+    outline: none;
+}
+
+.unit-container .button:hover {
+    color: #000000;
+}
+
+.unit-container .button:active {
+    color: #81b3d2;
+}
+
+.unit-container .minus-button {
+    left: 112px;
+}
+
+.unit-container .plus-button {
+    right: 0;
+}
+
+.half-width:first-child .plus-button {
+    right: 3px;
+}
+
+.half-width:last-child .minus-button {
+    left: 115px;
+}
+
+.search-form .find-button {
+    display: block;
+    width: 458px;
+    margin: 0 auto;
+    margin-top: 54px;
+    padding: 14px 10px 15px;
+    box-sizing: border-box;
+    font-size: 21px;
+    line-height: 26px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #81b3d2;
+    border: none;
+    outline: none;
+}
+
+.search-form .find-button:hover {
+    background: #669ec0;
+}
+
+.search-form .find-button:active {
+    background: #5496bd;
+}
+
+.search-form .find-button:active span {
+    opacity: 0.3;
+}
+
+.map {
+    background: url(../img/map.jpg) 50% 0 no-repeat;
+    height: 593px;
+}
+
+.map iframe {
+    border: 0;
+    height: 593px;
+    width: 100%;
+}
+
 /*Страница бронирования гостиниц*/
 
 .clearfix::after {
@@ -390,7 +721,7 @@ li {
   font-size: 16px;
   line-height: 21px;
   color: #ffffff;
-  background: #4b7ea9 url("../img/filter-background.jpg") no-repeat center top;
+  background: #4b7ea9 url("../img/filter-background.jpg") no-repeat 50% 20%;
 }
 
 .container-filter-menu h2 {
@@ -891,4 +1222,10 @@ li {
   line-height: 21px;
   color: #666666;
   background-color: #f2f2f2;
+}
+
+.footer-catalog {
+  margin-top: 0 auto;
+  background-color: #f9f9f9;
+  vertical-align: middle;
 }
