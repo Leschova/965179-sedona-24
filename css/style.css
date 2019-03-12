@@ -49,7 +49,6 @@ li {
     text-decoration: inherit;
     font-style: normal;
     font-variant: normal;
-    speak: none;
 }
 
 .icon-plus::before { content: "\e801"; } /* "" */
@@ -556,6 +555,10 @@ li {
     padding: 5px 0 7px;
 }
 
+.search-form input {
+  font-weight: 700;
+}
+
 .search-form .field {
     float: right;
     line-height: 26px;
@@ -565,13 +568,6 @@ li {
     box-sizing: border-box;
     text-transform: uppercase;
     background: #f2f2f2;
-}
-
-::-webkit-input-placeholder,
-::-moz-placeholder,
-:-moz-placeholder,
-:-ms-input-placeholder {
-    color: #000000;
 }
 
 .search-form .field:hover {
@@ -589,26 +585,32 @@ li {
 }
 
 .search-form .icon-calendar {
-    position: absolute;
-    right: 6px;
-    bottom: 0;
-    font-size: 21px;
-    font-weight: 200;
-    line-height: 38px;
-    color: #c2c2c2;
-    cursor: pointer;
+  position: absolute;
+  outline: none;
+  width: 30px;
+  height: 22px;
+  top: 8px;
+  right: 0;
+  z-index: 99;
+  padding: 0;
+  border: none;
+  font: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.search-form .icon-calendar:hover {
-    color: #000000;
+.search-form svg {
+  fill: #cacaca;
 }
 
-.search-form .icon-calendar:active {
-    color: #81b3d2;
+
+.search-form svg:hover {
+  fill: #000;
 }
 
 .search-form .half-width {
-    display: inline-block;
+    display: block;
+    float: left;
     width: 50%;
     vertical-align: top;
     box-sizing: border-box;
